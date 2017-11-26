@@ -17,9 +17,9 @@ Meteor.publish('users', function() {
       fields: publicFields,
     });
   }
-  return Meteor.users.find({'profile.department': current_user.profile.department}, {
-    fields: publicFields,
-  });
+  // return Meteor.users.find({'profile.department': current_user.profile.department}, {
+  //   fields: publicFields,
+  // });
 });
 
 const adminFields = {

@@ -19,7 +19,7 @@ export const servers_schema = new SimpleSchema({
   },
   endpoint: {
     type: String,
-    defaultValue: '/admin/add_service'
+    defaultValue: '/admin/dynamic_services'
   },
   secret: String
 });

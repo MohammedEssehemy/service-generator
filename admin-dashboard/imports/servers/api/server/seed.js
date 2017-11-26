@@ -8,6 +8,7 @@ const sample_server = {
   name: 'looopback-local',
   host: 'http://localhost',
   port: 3000,
+  endpoint: '/admin/dynamic_services',
   secret: "hoshhhhh that's secret"
 };
 
