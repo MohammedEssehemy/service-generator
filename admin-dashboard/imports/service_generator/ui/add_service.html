@@ -1,0 +1,12 @@
+<template name="add_service">
+  <form class="form" id="add_service">
+    <input type="text" name="service_name" placeholder="service name"/>
+    <select name="server">
+      {{#each server in servers}}
+      <option value="{{server._id._str}}">{{server.name}}</option>
+      {{/each}}
+    </select>
+    <div id="fbEditor"></div>
+    <button type="submit" name="button">submit</button>
+  </form>
+</template>

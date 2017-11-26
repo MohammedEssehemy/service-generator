@@ -1,0 +1,11 @@
+{
+  "loopback-component-explorer": {
+    "mountPath": "/explorer",
+    "generateOperationScopedModels": true
+  },
+  "./components/dynamic_services":{
+    "path":"/admin/dynamic_services",
+    "secret": "hoshhhhh that's secret",
+    "dataSource":"MongoDS"
+  }
+}
