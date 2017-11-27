@@ -1,5 +1,8 @@
 {
   "name": "admin-dashboard",
+  "engines": {
+     "node": "8.8.1"
+   },
   "private": true,
   "scripts": {
     "start": "meteor run"
