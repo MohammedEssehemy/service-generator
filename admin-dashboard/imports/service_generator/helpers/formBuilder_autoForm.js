@@ -105,7 +105,7 @@ export function department_to_af(department, user, access, isSearchForm) {
     if (department.schema.hasOwnProperty(key)) {
       department.schema[key].type = eval(department.schema[key].type);
       if (isSearchForm && department.schema[key] && department.schema[key].autoform.type === 'date') {
-        debugger;
+        // debugger;
         delete department.schema[key].autoform.type;
         department.schema[key].autoform.afFieldInput = {type: 'dateRange'};
       }

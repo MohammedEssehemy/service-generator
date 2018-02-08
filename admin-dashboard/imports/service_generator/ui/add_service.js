@@ -3,15 +3,11 @@ import {Mongo} from 'meteor/mongo';
 import {Tracker} from 'meteor/tracker';
 import {Template} from 'meteor/templating';
 import {Session} from 'meteor/session';
-import {HTTP} from 'meteor/http';
-import jwt from 'jsonwebtoken';
 import $ from 'jquery';
 import 'jquery-ui-sortable';
 import 'formBuilder';
 // import {patch} from './ar_patch.js';
 import './add_service.html';
-
-const Servers = Mongo.Collection.get('servers');
 
 Template.add_service.onRendered(function() {
   // hide className, and options value field
@@ -86,11 +82,11 @@ Template.add_service.onRendered(function() {
   form.promise.then(formInstance => {
     this.form = formInstance;
     // Tracker.autorun(() => {
-  // let departmentSchema = Session.get('departmentSchema');
-  // if (form && departmentSchema) {
-  // let formData = JSON.stringify(af_to_fb(departmentSchema));
-  // formInstance.actions.setData(formData);
-  // }
+    // let departmentSchema = Session.get('departmentSchema');
+    // if (form && departmentSchema) {
+    // let formData = JSON.stringify(af_to_fb(departmentSchema));
+    // formInstance.actions.setData(formData);
+    // }
     // });
   });
 });
@@ -98,22 +94,16 @@ Template.add_service.helpers({});
 Template.add_service.events({
   'submit #add_service'(e, template) {
     e.preventDefault();
-    let service_name = $('[name="service_name"]').val();
-    let selected_id = new Mongo.ObjectID($('[name="server"]').val());
-    let server = Servers.findOne(selected_id);
+    let serviceName = $('[name="service_name"]').val();
     let formData = template.form.actions.getData();
-    debugger;
-    token = jwt.sign({}, server.secret, {expiresIn: 60 * 5});
-    HTTP.call('POST', `${server.host}:${server.port}${server.endpoint}`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'authorization': `Bearer ${token}`
-        },
-        data: {name: service_name, schema: formData}
-      }, (err, res)=>{
-        debugger;
-      });
+    Meteor.call('sendService', serviceName, formData, (err, res) => {
+      if (err) {
+        console.log(err)
+        Bert.alert('Yes, I do Mind!', 'danger', 'growl-top-right');
+      } else {
+        Bert.alert("NOICE", "success")
+      }
+    })
   }
 });
 

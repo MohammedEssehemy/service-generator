@@ -1,5 +1,28 @@
 <template name='header'>
-  {{> atNavButton}}
-  {{currentUser.emails.[0].address}}
-    <a href="#"><i class="fa fa-arrow-right bck-btn float-right" aria-hidden="true"></i></a>
+  {{> navbar}}
+  <!--   {{currentUser.emails.[0].address}}
+  <a href="#"><i class="fa fa-arrow-right bck-btn float-right" aria-hidden="true"></i></a> -->
+</template>
+
+<template name="navbar">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="{{pathFor 'home'}}">Brand</a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav">
+          {{#if currentUser}}
+          <li class="active"><a href="{{pathFor 'home'}}">{{_ "home"}}</a></li>
+          <li><a href="{{pathFor 'service'}}">{{_ "register_service"}}</a></li>
+          <li><a href="{{pathFor 'logout'}}">{{_ "logout"}}</a></li>
+          {{else}}
+          <li><a href="{{pathFor 'register'}}">{{_ "register"}}</a></li>
+          <li><a href="{{pathFor 'login'}}">{{_ "login"}}</a></li>
+          {{/if}}
+
+        </ul>
+      </div>
+    </div>
+  </nav>
 </template>

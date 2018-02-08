@@ -1,11 +1,12 @@
 {
   "name": "admin-dashboard",
   "engines": {
-     "node": "8.8.1"
-   },
+    "node": "8.8.1"
+  },
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor --port 3030 --settings settings.json",
+    "debug": "meteor --port 3030 --settings settings.json --inspect"
   },
   "dependencies": {
     "ansi-to-html": "^0.6.3",
@@ -16,6 +17,7 @@
     "jsonwebtoken": "^8.1.0",
     "lodash": "^4.17.4",
     "meteor-node-stubs": "^0.3.2",
+    "request": "^2.83.0",
     "sanitize-html": "^1.15.0",
     "simpl-schema": "^1.1.0"
   }
